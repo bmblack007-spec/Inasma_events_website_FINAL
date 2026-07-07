@@ -119,7 +119,7 @@ export default function App() {
       <div className="bg-cream py-8 border-b border-gold-100">
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-white border border-gold-200 p-6 md:p-8 shadow-[0_4px_25px_rgba(198,147,58,0.05)]">
-            <ul className="space-y-3.5 text-charcoal-600 text-sm md:text-base font-light leading-relaxed">
+            <ul className="space-y-3.5 text-charcoal-600 text-base md:text-lg font-light leading-relaxed">
               <li className="flex items-start gap-2.5">
                 <span className="text-gold-500 font-bold select-none">•</span>
                 <span>Please Enquire about Quantities / Date availability</span>
