@@ -22,34 +22,49 @@ interface ProductGalleryProps {
 
 // ── Fuzzy helpers ──────────────────────────────────────────────
 function levenshtein(a: string, b: string): number {
-  const m = a.length, n = b.length;
-  const dp: number[][] = Array.from({ length: m + 1 }, (_, i) =>
-    Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
-  );
-  for (let i = 1; i <= m; i++)
-    for (let j = 1; j <= n; j++)
-      dp[i][j] =
-        a[i - 1] === b[j - 1]
-          ? dp[i - 1][j - 1]
-          : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
-  return dp[m][n];
+  if (a.length > b.length) {
+    const tmp = a; a = b; b = tmp;
+  }
+  const la = a.length;
+  const lb = b.length;
+  if (la === 0) return lb;
+  
+  const prevRow = new Int32Array(la + 1);
+  for (let i = 0; i <= la; i++) {
+    prevRow[i] = i;
+  }
+  
+  for (let i = 1; i <= lb; i++) {
+    let prevDiag = prevRow[0];
+    prevRow[0] = i;
+    const bChar = b[i - 1];
+    for (let j = 1; j <= la; j++) {
+      const temp = prevRow[j];
+      if (a[j - 1] === bChar) {
+        prevRow[j] = prevDiag;
+      } else {
+        prevRow[j] = 1 + Math.min(prevRow[j - 1], prevRow[j], prevDiag);
+      }
+      prevDiag = temp;
+    }
+  }
+  return prevRow[la];
 }
 
-function fuzzyTokenMatch(query: string, target: string): boolean {
-  const qTokens = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const tTokens = target.toLowerCase().split(/\s+/).filter(Boolean);
+function fuzzyTokenMatch(qTokens: string[], lowerSearchText: string, tTokens: string[]): boolean {
   return qTokens.every((qt) => {
-    if (target.toLowerCase().includes(qt)) return true;
+    if (lowerSearchText.includes(qt)) return true;
     const maxDist = qt.length <= 4 ? 1 : 2;
     return tTokens.some((tt) => levenshtein(qt, tt) <= maxDist);
   });
 }
-
-function productSearchText(p: Product): string {
-  const swatchNames = (p.colourPalette ?? []).map((s) => s.name).join(' ');
-  return [p.title, p.category, p.description ?? '', swatchNames].join(' ');
-}
 // ──────────────────────────────────────────────────────────────
+
+interface SearchableProduct {
+  product: Product;
+  lowerSearchText: string;
+  tokens: string[];
+}
 
 export default function ProductGallery({
   products,
@@ -59,18 +74,37 @@ export default function ProductGallery({
 }: ProductGalleryProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categoryFiltered = useMemo(
-    () => (activeCategory === 'All' ? products : products.filter((p) => p.category === activeCategory)),
-    [products, activeCategory]
-  );
+  // Precompute searchable content for all products to avoid allocations on search keystrokes
+  const searchableProducts = useMemo<SearchableProduct[]>(() => {
+    return products.map((p) => {
+      const swatchNames = (p.colourPalette ?? []).map((s) => s.name).join(' ');
+      const text = [p.title, p.category, p.description ?? '', swatchNames].join(' ').toLowerCase();
+      const tokens = text.split(/\s+/).filter(Boolean);
+      return {
+        product: p,
+        lowerSearchText: text,
+        tokens,
+      };
+    });
+  }, [products]);
 
   const sorted = useMemo(() => {
-    const q = searchQuery.trim();
-    if (!q) return categoryFiltered;
-    return categoryFiltered.filter((p) => fuzzyTokenMatch(q, productSearchText(p)));
-  }, [categoryFiltered, searchQuery]);
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) {
+      return activeCategory === 'All'
+        ? products
+        : products.filter((p) => p.category === activeCategory);
+    }
+    const qTokens = q.split(/\s+/).filter(Boolean);
+    const filtered = activeCategory === 'All'
+      ? searchableProducts
+      : searchableProducts.filter((sp) => sp.product.category === activeCategory);
+      
+    return filtered
+      .filter((sp) => fuzzyTokenMatch(qTokens, sp.lowerSearchText, sp.tokens))
+      .map((sp) => sp.product);
+  }, [products, searchableProducts, activeCategory, searchQuery]);
 
-  const filterOptions: (Category | 'All')[] = ['All', ...categories.map((c) => c.name)];
   const hasSearch = searchQuery.trim().length > 0;
 
   return (
