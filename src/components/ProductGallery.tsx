@@ -74,15 +74,7 @@ export default function ProductGallery({
           <div className="w-12 h-px bg-gold-400 mx-auto mt-6" />
         </div>
 
-        {/* Ordering info banner */}
-        <div className="max-w-2xl mx-auto mb-10 border border-gold-200 bg-white px-6 py-5 text-center">
-          <p className="text-sm text-charcoal-600 leading-relaxed">
-            All orders and queries are handled via{' '}
-            <a href="mailto:b.r.maxwell00@gmail.com" className="text-gold-600 font-medium hover:text-gold-500 transition-colors">email</a>,{' '}
-            <a href="https://wa.me/27813566058" target="_blank" rel="noopener noreferrer" className="text-gold-600 font-medium hover:text-gold-500 transition-colors">WhatsApp</a>, or{' '}
-            <a href="tel:0813566058" className="text-gold-600 font-medium hover:text-gold-500 transition-colors">phone</a>.
-          </p>
-        </div>
+
 
         {/* ── Search bar ── */}
         <div className="max-w-xl mx-auto mb-10">
@@ -167,6 +159,18 @@ export default function ProductGallery({
             ))}
           </div>
         )}
+
+        {/* Enquire Button Section */}
+        <div className="text-center mt-16 md:mt-20">
+          <a
+            href="https://wa.me/27813566058"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gold-400 text-charcoal-900 px-10 py-5 text-xs uppercase tracking-widest font-medium hover:bg-gold-300 hover:shadow-[0_4px_25px_rgba(198,147,58,0.15)] transition-all duration-300"
+          >
+            Enquire Now
+          </a>
+        </div>
       </div>
     </section>
   );
