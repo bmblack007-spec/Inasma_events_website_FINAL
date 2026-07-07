@@ -39,16 +39,26 @@ export default function Navbar({ onNavigate }: NavbarProps) {
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <button
           onClick={() => handleNav('home')}
-          className="flex items-center gap-2 font-serif text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
-          style={{ color: scrolled ? '#1f2123' : '#ffffff' }}
+          className="flex flex-col items-center group focus:outline-none"
         >
-          <img
-            src={logoWhite}
-            alt="INASMA Logo"
-            className="h-6 md:h-8 w-auto object-contain transition-all duration-300"
-            style={{ filter: scrolled ? 'invert(1) brightness(0.2)' : 'none' }}
-          />
-          <span className="leading-none select-none">INASMA</span>
+          <div
+            className="flex items-center gap-2 font-serif text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
+            style={{ color: scrolled ? '#1f2123' : '#ffffff' }}
+          >
+            <img
+              src={logoWhite}
+              alt="INASMA Logo"
+              className="h-6 md:h-8 w-auto object-contain transition-all duration-300"
+              style={{ filter: scrolled ? 'invert(1) brightness(0.2)' : 'none' }}
+            />
+            <span className="leading-none select-none">INASMA</span>
+          </div>
+          <span
+            className="text-[8px] md:text-[9px] uppercase tracking-[0.4em] pl-[0.4em] font-light mt-1.5 transition-colors duration-300"
+            style={{ color: scrolled ? '#6b7280' : 'rgba(255, 255, 255, 0.65)' }}
+          >
+            Johannesburg
+          </span>
         </button>
 
         <div className="hidden md:flex items-center gap-10">
