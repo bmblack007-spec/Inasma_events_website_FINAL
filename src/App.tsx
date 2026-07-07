@@ -141,11 +141,6 @@ export default function App() {
         </div>
       </div>
 
-      <CategoryNav
-        categories={categories}
-        activeCategory={activeCategory}
-        onSelect={handleCategorySelect}
-      />
       <ProductGallery
         products={products}
         activeCategory={activeCategory}
