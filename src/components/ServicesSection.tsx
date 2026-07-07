@@ -23,10 +23,10 @@ const services: Service[] = [
   },
   {
     id: 'decor-hire',
-    title: 'Decor Hire',
+    title: 'Décor Hire',
     icon: Armchair,
     description:
-      'An extensive catalogue of decor items— chairs, tables, backdrops, centrepieces, lighting, and more — available for hire to transform any venue into a setting your guests will never forget.',
+      'An extensive catalogue of décor items— chairs, tables, backdrops, centrepieces, lighting, and more — available for hire to transform any venue into a setting your guests will never forget.',
     image: gradBalloons,
   },
   {

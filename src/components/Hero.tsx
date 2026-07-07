@@ -33,7 +33,7 @@ export default function Hero({}: HeroProps) {
             CATALOGUE
           </h1>
           <p className="text-gold-50 text-l md:text-l uppercase tracking-widest mt-3">
-            Decor Hire
+            Décor Hire
           </p>
         </div>
       </div>
