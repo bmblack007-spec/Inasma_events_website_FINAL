@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Instagram, MessageCircle } from 'lucide-react';
 import logoWhite from '../assets/Logo_white_transparentBG.png';
 
 interface NavbarProps {
@@ -63,10 +63,21 @@ export default function Navbar({ onNavigate }: NavbarProps) {
             </button>
           ))}
           <a
-            href="tel:0813566058"
-            className="flex items-center gap-2 text-xs uppercase tracking-widest font-medium text-gold-400 hover:text-gold-300 transition-colors"
+            href="https://www.instagram.com/inasma._decor?igsh=YzF6OWI3czFsMGxs&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-gold-400 hover:text-gold-300 transition-colors"
           >
-            <Phone size={14} />
+            <Instagram size={14} />
+            inasma._decor
+          </a>
+          <a
+            href="https://wa.me/27813566058"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-gold-400 hover:text-gold-300 transition-colors"
+          >
+            <MessageCircle size={14} />
             081 356 6058
           </a>
         </div>
@@ -97,10 +108,21 @@ export default function Navbar({ onNavigate }: NavbarProps) {
             </button>
           ))}
           <a
-            href="tel:0813566058"
-            className="flex items-center gap-2 text-sm uppercase tracking-widest font-medium text-gold-500"
+            href="https://www.instagram.com/inasma._decor?igsh=YzF6OWI3czFsMGxs&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm uppercase tracking-widest font-medium text-gold-500 hover:text-gold-450 transition-colors"
           >
-            <Phone size={16} />
+            <Instagram size={16} />
+            inasma._decor
+          </a>
+          <a
+            href="https://wa.me/27813566058"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm uppercase tracking-widest font-medium text-gold-500 hover:text-gold-450 transition-colors"
+          >
+            <MessageCircle size={16} />
             081 356 6058
           </a>
         </div>

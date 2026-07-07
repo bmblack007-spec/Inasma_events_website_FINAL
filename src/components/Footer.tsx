@@ -39,6 +39,15 @@ export default function Footer() {
                 <MessageCircle size={16} className="text-gold-400 group-hover:scale-110 transition-transform" />
                 <span className="text-sm tracking-wide">WhatsApp Us</span>
               </a>
+              <a
+                href="https://www.instagram.com/inasma._decor?igsh=YzF6OWI3czFsMGxs&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white/70 hover:text-gold-300 transition-colors group"
+              >
+                <Instagram size={16} className="text-gold-400 group-hover:scale-110 transition-transform" />
+                <span className="text-sm tracking-wide">inasma._decor</span>
+              </a>
               <div className="flex items-center gap-3 text-white/70">
                 <Mail size={16} className="text-gold-400" />
                 <span className="text-sm tracking-wide">b.r.maxwell00@gmail.com</span>
@@ -58,7 +67,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/inasma._decor?igsh=YzF6OWI3czFsMGxs&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
