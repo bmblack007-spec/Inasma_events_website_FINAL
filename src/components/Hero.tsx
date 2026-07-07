@@ -27,12 +27,12 @@ export default function Hero({}: HeroProps) {
           <img
             src={logoWhite}
             alt="INASMA Logo"
-            className="w-auto h-auto max-w-[300px] md:max-w-[500px] object-contain mb-6"
+            className="w-auto h-auto max-w-[200px] sm:max-w-[300px] md:max-w-[500px] object-contain mb-6"
           />
-          <h1 className="font-serif text-white text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.4em] pl-[0.4em] uppercase">
+          <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.2em] sm:tracking-[0.4em] pl-[0.2em] sm:pl-[0.4em] uppercase">
             CATALOGUE
           </h1>
-          <p className="text-gold-50 text-l md:text-l uppercase tracking-widest mt-3">
+          <p className="text-gold-50 text-xs sm:text-sm uppercase tracking-widest mt-3">
             Décor Hire
           </p>
         </div>

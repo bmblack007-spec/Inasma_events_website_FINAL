@@ -64,10 +64,10 @@ export default function ServicesSection({ onViewGallery, onViewCatalogue }: Serv
             key={service.id}
             id={service.id}
             className={`max-w-7xl mx-auto flex flex-col lg:items-center ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-              } ${idx !== 0 ? 'pt-20 md:pt-28' : 'pt-20 md:pt-28'} pb-0 px-6`}
+              } pt-12 sm:pt-16 md:pt-20 lg:pt-28 pb-0 px-4 sm:px-6`}
           >
             {/* Image (0.7x size: lg:w-[35%] and adjusted heights) */}
-            <div className="w-full lg:w-[35%] relative overflow-hidden h-[224px] md:h-[336px] lg:min-h-[392px] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+            <div className="w-full lg:w-[35%] relative overflow-hidden h-[200px] sm:h-[260px] md:h-[336px] lg:min-h-[392px] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
               <img
                 src={service.image}
                 alt={service.title}
@@ -78,7 +78,7 @@ export default function ServicesSection({ onViewGallery, onViewCatalogue }: Serv
             </div>
 
             {/* Content (occupies remaining 65% width) */}
-            <div className="w-full lg:w-[65%] flex items-center px-6 md:px-12 lg:px-20 py-10 lg:py-16">
+            <div className="w-full lg:w-[65%] flex items-center px-0 sm:px-4 md:px-12 lg:px-20 py-8 lg:py-16">
               <div className="max-w-lg">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 border border-gold-300 flex items-center justify-center text-gold-500">
@@ -87,10 +87,10 @@ export default function ServicesSection({ onViewGallery, onViewCatalogue }: Serv
                   <div className="w-12 h-px bg-gold-400" />
                 </div>
 
-                <h2 className="font-serif text-charcoal-900 text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
+                <h2 className="font-serif text-charcoal-900 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-5 leading-tight">
                   {service.title}
                 </h2>
-                <p className="text-charcoal-500 text-base md:text-lg leading-relaxed font-light">
+                <p className="text-charcoal-500 text-sm sm:text-base md:text-lg leading-relaxed font-light">
                   {service.description}
                 </p>
                 {service.id === 'events-coordination' && (

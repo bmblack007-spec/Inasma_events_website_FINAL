@@ -20,7 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   // ── Wide variant — palette IMAGE (photo of all colours) ───────
   if (hasPaletteImage) {
     return (
-      <div className="group bg-white border border-charcoal-100 overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:border-gold-200 flex flex-row">
+      <div className="group bg-white border border-charcoal-100 overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:border-gold-200 flex flex-col sm:flex-row">
         {/* LEFT – product image + info */}
         <div className="flex flex-col flex-1 min-w-0">
           <div className="relative aspect-[4/3] overflow-hidden bg-white">
@@ -94,7 +94,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   if (hasColours) {
     return (
-      <div className="group bg-white border border-charcoal-100 overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:border-gold-200 flex flex-row">
+      <div className="group bg-white border border-charcoal-100 overflow-hidden transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:border-gold-200 flex flex-col sm:flex-row">
         {/* LEFT – image + info */}
         <div className="flex flex-col flex-1 min-w-0">
           {/* Image */}

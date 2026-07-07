@@ -76,9 +76,9 @@ export default function ProductGallery({
   return (
     <section id="catalogue" className="pt-2 pb-20 md:pb-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <p className="text-gold-500 text-xs uppercase tracking-widest mb-3">Our Collection</p>
-          <h2 className="font-serif text-charcoal-900 text-3xl md:text-5xl font-light">
+          <h2 className="font-serif text-charcoal-900 text-2xl sm:text-3xl md:text-5xl font-light">
             The Catalogue
           </h2>
           <div className="w-12 h-px bg-gold-400 mx-auto mt-6" />
@@ -113,24 +113,25 @@ export default function ProductGallery({
           </div>
         </div>
 
-        {/* Category icon grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3 mb-8">
+        {/* Category icon grid — scrollable on mobile */}
+        <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0 mb-8">
+          <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3 w-max sm:w-auto">
           {/* ALL button */}
           <button
             onClick={() => onCategoryChange('All')}
-            className={`group flex flex-col items-center justify-center gap-3 p-4 border transition-all duration-400 ${
+            className={`flex-shrink-0 flex flex-col items-center justify-center gap-2 p-3 sm:p-4 border transition-all duration-400 w-[70px] sm:w-auto ${
               activeCategory === 'All'
                 ? 'border-gold-400 bg-white shadow-[0_4px_30px_rgba(198,147,58,0.12)]'
-                : 'border-charcoal-100/70 bg-white/50 hover:border-gold-300 hover:bg-white hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
+                : 'border-charcoal-100/70 bg-white/50 hover:border-gold-300 hover:bg-white'
             }`}
           >
             <div className={`transition-colors duration-300 ${
-              activeCategory === 'All' ? 'text-gold-500' : 'text-charcoal-300 group-hover:text-gold-400'
+              activeCategory === 'All' ? 'text-gold-500' : 'text-charcoal-300'
             }`}>
-              <Layers size={20} strokeWidth={1.25} />
+              <Layers size={18} strokeWidth={1.25} />
             </div>
-            <span className={`text-[9px] uppercase tracking-widest font-medium text-center leading-tight transition-colors duration-300 ${
-              activeCategory === 'All' ? 'text-gold-600' : 'text-charcoal-500 group-hover:text-charcoal-800'
+            <span className={`text-[8px] sm:text-[9px] uppercase tracking-widest font-medium text-center leading-tight transition-colors duration-300 ${
+              activeCategory === 'All' ? 'text-gold-600' : 'text-charcoal-500'
             }`}>
               All
             </span>
@@ -143,25 +144,26 @@ export default function ProductGallery({
               <button
                 key={cat.name}
                 onClick={() => onCategoryChange(isActive ? 'All' : cat.name)}
-                className={`group flex flex-col items-center justify-center gap-3 p-4 border transition-all duration-400 ${
+                className={`flex-shrink-0 flex flex-col items-center justify-center gap-2 p-3 sm:p-4 border transition-all duration-400 w-[70px] sm:w-auto ${
                   isActive
                     ? 'border-gold-400 bg-white shadow-[0_4px_30px_rgba(198,147,58,0.12)]'
-                    : 'border-charcoal-100/70 bg-white/50 hover:border-gold-300 hover:bg-white hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)]'
+                    : 'border-charcoal-100/70 bg-white/50 hover:border-gold-300 hover:bg-white'
                 }`}
               >
                 <div className={`transition-colors duration-300 ${
-                  isActive ? 'text-gold-500' : 'text-charcoal-300 group-hover:text-gold-400'
+                  isActive ? 'text-gold-500' : 'text-charcoal-300'
                 }`}>
-                  <Icon size={20} strokeWidth={1.25} />
+                  <Icon size={18} strokeWidth={1.25} />
                 </div>
-                <span className={`text-[9px] uppercase tracking-widest font-medium text-center leading-tight transition-colors duration-300 ${
-                  isActive ? 'text-gold-600' : 'text-charcoal-500 group-hover:text-charcoal-800'
+                <span className={`text-[8px] sm:text-[9px] uppercase tracking-widest font-medium text-center leading-tight transition-colors duration-300 ${
+                  isActive ? 'text-gold-600' : 'text-charcoal-500'
                 }`}>
                   {cat.name}
                 </span>
               </button>
             );
           })}
+          </div>
         </div>
 
         {/* Count row */}
@@ -202,7 +204,7 @@ export default function ProductGallery({
             href="https://wa.me/27813566058"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gold-400 text-charcoal-900 px-10 py-5 text-xs uppercase tracking-widest font-medium hover:bg-gold-300 hover:shadow-[0_4px_25px_rgba(198,147,58,0.15)] transition-all duration-300"
+            className="inline-flex items-center gap-3 bg-gold-400 text-charcoal-900 px-8 sm:px-10 py-4 sm:py-5 text-xs uppercase tracking-widest font-medium hover:bg-gold-300 hover:shadow-[0_4px_25px_rgba(198,147,58,0.15)] transition-all duration-300"
           >
             Enquire Now
           </a>

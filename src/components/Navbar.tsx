@@ -42,7 +42,7 @@ export default function Navbar({ onNavigate }: NavbarProps) {
           className="flex flex-col items-center group focus:outline-none"
         >
           <div
-            className="flex items-center gap-2 font-serif text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
+            className="flex items-center gap-2 font-serif text-xl sm:text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
             style={{ color: scrolled ? '#1f2123' : '#ffffff' }}
           >
             <img

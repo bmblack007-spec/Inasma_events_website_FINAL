@@ -29,23 +29,23 @@ export default function ServicesHero({ onExplore, onViewCatalogue }: ServicesHer
           <img
             src={logoWhite}
             alt="INASMA Logo"
-            className="w-auto h-auto max-w-[300px] md:max-w-[500px] object-contain mb-4"
+            className="w-auto h-auto max-w-[220px] sm:max-w-[300px] md:max-w-[500px] object-contain mb-4"
           />
-          <h1 className="font-serif text-white text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.6em] pl-[0.6em]">
+          <h1 className="font-serif text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.3em] sm:tracking-[0.6em] pl-[0.3em] sm:pl-[0.6em]">
             INASMA
           </h1>
-          <p className="text-gold-50 text-l md:text-l uppercase tracking-widest mt-3">
+          <p className="text-gold-50 text-xs sm:text-sm md:text-base uppercase tracking-widest mt-3">
             Events
           </p>
         </div>
         <div className="w-16 h-px bg-gold-400 mx-auto mb-6 animate-scale-in" style={{ animationDelay: '0.3s', opacity: 0 }} />
-        <p className="font-serif italic text-white/90 text-lg md:text-2xl font-light tracking-wide mb-10 animate-fade-in-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+        <p className="font-serif italic text-white/90 text-base sm:text-lg md:text-2xl font-light tracking-wide mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
           Transforming Space For Lifetime Memories
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.55s', opacity: 0 }}>
           <button
             onClick={onExplore}
-            className="group inline-flex items-center gap-3 bg-gold-400 text-charcoal-900 border border-gold-400 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-300 hover:border-gold-300 transition-all duration-500"
+            className="group inline-flex items-center gap-3 bg-gold-400 text-charcoal-900 border border-gold-400 px-6 sm:px-8 py-3 sm:py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-300 hover:border-gold-300 transition-all duration-500"
           >
             Explore Services
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -53,7 +53,7 @@ export default function ServicesHero({ onExplore, onViewCatalogue }: ServicesHer
           {onViewCatalogue && (
             <button
               onClick={onViewCatalogue}
-              className="group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-300 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
+              className="group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-300 px-6 sm:px-8 py-3 sm:py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
             >
               View Catalogue
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
