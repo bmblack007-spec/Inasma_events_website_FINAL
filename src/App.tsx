@@ -114,6 +114,33 @@ export default function App() {
     <div className="min-h-screen bg-cream">
       <Navbar onNavigate={handleNavigate} />
       <Hero onViewCatalogue={() => scrollToSection('catalogue')} />
+      
+      {/* Catalogue Information Banner */}
+      <div className="bg-cream py-8 border-b border-gold-100">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-white border border-gold-200 p-6 md:p-8 shadow-[0_4px_25px_rgba(198,147,58,0.05)]">
+            <ul className="space-y-3.5 text-charcoal-600 text-sm md:text-base font-light leading-relaxed">
+              <li className="flex items-start gap-2.5">
+                <span className="text-gold-500 font-bold select-none">•</span>
+                <span>Please Enquire about Quantities / Date availability</span>
+              </li>
+              <li className="flex items-start gap-2.5 font-semibold text-charcoal-900">
+                <span className="text-gold-500 font-bold select-none">•</span>
+                <span>We are not Limited to the stock items on this catalogue, please enquire about any specific products required</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-gold-500 font-bold select-none">•</span>
+                <span>Please Note: Colours shown on screen might differ slightly from the naked eye</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="text-gold-500 font-bold select-none">•</span>
+                <span>We provide a delivery service at an additional charge</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <CategoryNav
         categories={categories}
         activeCategory={activeCategory}
