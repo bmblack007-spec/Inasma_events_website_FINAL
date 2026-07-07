@@ -64,7 +64,7 @@ export default function ProductGallery({
   const hasSearch = searchQuery.trim().length > 0;
 
   return (
-    <section id="catalogue" className="py-20 md:py-28 bg-cream">
+    <section id="catalogue" className="pt-2 pb-20 md:pb-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-gold-500 text-xs uppercase tracking-widest mb-3">Our Collection</p>
@@ -103,38 +103,13 @@ export default function ProductGallery({
           </div>
         </div>
 
-        {/* Filter bar */}
-        <div className="flex flex-col gap-5 mb-10">
-          {/* Category pills — horizontally scrollable */}
-          <div className="flex items-end gap-2">
-            <span className="flex-shrink-0 text-gold-400 font-light text-lg select-none pointer-events-none translate-y-2">&lt;</span>
-            <div className="overflow-x-auto pb-2 flex-1 min-w-0">
-              <div className="flex gap-2 w-max">
-                {filterOptions.map((opt) => (
-                  <button
-                    key={opt}
-                    onClick={() => onCategoryChange(opt)}
-                    className={`flex-shrink-0 px-4 py-2 text-[10px] uppercase tracking-widest font-medium border transition-all duration-300 whitespace-nowrap ${activeCategory === opt
-                        ? 'bg-charcoal-900 text-white border-charcoal-900'
-                        : 'bg-transparent text-charcoal-500 border-charcoal-200 hover:border-gold-400 hover:text-gold-500'
-                      }`}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <span className="flex-shrink-0 text-gold-400 font-light text-lg select-none pointer-events-none translate-y-2">&gt;</span>
-          </div>
-
-          {/* Count row */}
-          <div className="flex items-center justify-between gap-4 flex-wrap">
-            <p className="text-xs uppercase tracking-widest text-charcoal-400">
-              {sorted.length} {sorted.length === 1 ? 'item' : 'items'}
-              {activeCategory !== 'All' && ` in ${activeCategory}`}
-              {hasSearch && ` matching "${searchQuery.trim()}"`}
-            </p>
-          </div>
+        {/* Count row */}
+        <div className="flex items-center justify-between gap-4 flex-wrap mb-10">
+          <p className="text-xs uppercase tracking-widest text-charcoal-400">
+            {sorted.length} {sorted.length === 1 ? 'item' : 'items'}
+            {activeCategory !== 'All' && ` in ${activeCategory}`}
+            {hasSearch && ` matching "${searchQuery.trim()}"`}
+          </p>
         </div>
 
         {/* Product grid */}
