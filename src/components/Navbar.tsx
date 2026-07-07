@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import logoWhite from '../assets/Logo_white_transparentBG.png';
 
 interface NavbarProps {
   onNavigate: (section: string) => void;
-  variant?: 'home' | 'services';
 }
 
-export default function Navbar({ onNavigate, variant = 'home' }: NavbarProps) {
+export default function Navbar({ onNavigate }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -16,20 +16,12 @@ export default function Navbar({ onNavigate, variant = 'home' }: NavbarProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links =
-    variant === 'services'
-      ? [
-          { label: 'Home', action: 'home' },
-          { label: 'Services', action: 'services' },
-          { label: 'Catalogue', action: 'catalogue' },
-          { label: 'Contact', action: 'contact' },
-        ]
-      : [
-          { label: 'Catalogue', action: 'catalogue' },
-          { label: 'Categories', action: 'categories' },
-          { label: 'Services', action: 'services' },
-          { label: 'Contact', action: 'contact' },
-        ];
+  const links = [
+    { label: 'Home', action: 'home' },
+    { label: 'Services', action: 'services' },
+    { label: 'Catalogue', action: 'catalogue' },
+    { label: 'Contact', action: 'contact' },
+  ];
 
   const handleNav = (action: string) => {
     onNavigate(action);
@@ -46,11 +38,17 @@ export default function Navbar({ onNavigate, variant = 'home' }: NavbarProps) {
     >
       <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <button
-          onClick={() => handleNav(variant === 'services' ? 'home' : 'hero')}
-          className="font-serif text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
+          onClick={() => handleNav('home')}
+          className="flex items-center gap-2 font-serif text-2xl md:text-3xl tracking-widest font-medium transition-colors duration-300"
           style={{ color: scrolled ? '#1f2123' : '#ffffff' }}
         >
-          INASMA
+          <img
+            src={logoWhite}
+            alt="INASMA Logo"
+            className="h-6 md:h-8 w-auto object-contain transition-all duration-300"
+            style={{ filter: scrolled ? 'invert(1) brightness(0.2)' : 'none' }}
+          />
+          <span className="leading-none select-none">INASMA</span>
         </button>
 
         <div className="hidden md:flex items-center gap-10">

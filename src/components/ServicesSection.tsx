@@ -1,4 +1,8 @@
-import { CalendarHeart, Armchair, UtensilsCrossed, Camera, Phone } from 'lucide-react';
+import { CalendarHeart, Armchair, UtensilsCrossed, Camera } from 'lucide-react';
+import familyPic from '../assets/Family_pic.jpeg';
+import meatballs from '../assets/meatballs.jpg';
+import eventsCoord from '../assets/Events_coord.jpg';
+import gradBalloons from '../assets/grad_balloons.png';
 
 interface Service {
   id: string;
@@ -14,27 +18,24 @@ const services: Service[] = [
     title: 'Events Coordination',
     icon: CalendarHeart,
     description:
-      'From intimate gatherings to grand celebrations, our experienced coordinators manage every aspect of your event — timelines, vendors, logistics, and on-the-day execution — so you can be fully present in the moment.',
-    image:
-      'https://images.pexels.com/photos/16791596/pexels-photo-16791596.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'From intimate gatherings to grand celebrations, our experienced coordinators manage every aspect of your event — timelines, vendors, logistics, and on-the-day execution — so you can be fully present in the moment. Enquire now for a consultation.',
+    image: eventsCoord,
   },
   {
     id: 'decor-hire',
     title: 'Decor Hire',
     icon: Armchair,
     description:
-      'An extensive catalogue of premium decor — chairs, tables, backdrops, centrepieces, lighting, and more — available for hire to transform any venue into a setting your guests will never forget.',
-    image:
-      'https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'An extensive catalogue of decor items— chairs, tables, backdrops, centrepieces, lighting, and more — available for hire to transform any venue into a setting your guests will never forget.',
+    image: gradBalloons,
   },
   {
     id: 'catering',
     title: 'Catering',
     icon: UtensilsCrossed,
     description:
-      'Tailored menus crafted with care, from elegant plated dinners to generous buffet spreads. We provide full catering equipment and professional service to suit events of any scale.',
-    image:
-      'https://images.pexels.com/photos/3184195/pexels-photo-3184195.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Tailored menus crafted with care, from elegant plated dinners to generous buffet spreads. We provide full catering equipment and professional service to suit all events. Enquire now for a consultation.',
+    image: meatballs,
   },
   {
     id: 'photography',
@@ -42,12 +43,16 @@ const services: Service[] = [
     icon: Camera,
     description:
       'Capture every fleeting moment with our professional photography services. From candid guest reactions to carefully styled portraits, we preserve the story of your day in timeless imagery.',
-    image:
-      'https://images.pexels.com/photos/313702/pexels-photo-313702.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    image: familyPic,
   },
 ];
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  onViewGallery?: () => void;
+  onViewCatalogue?: () => void;
+}
+
+export default function ServicesSection({ onViewGallery, onViewCatalogue }: ServicesSectionProps) {
   return (
     <section id="services" className="bg-cream">
       {services.map((service, idx) => {
@@ -58,23 +63,22 @@ export default function ServicesSection() {
           <div
             key={service.id}
             id={service.id}
-            className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} ${
-              idx !== 0 ? 'pt-20 md:pt-28' : 'pt-20 md:pt-28'
-            } pb-0`}
+            className={`max-w-7xl mx-auto flex flex-col lg:items-center ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
+              } ${idx !== 0 ? 'pt-20 md:pt-28' : 'pt-20 md:pt-28'} pb-0 px-6`}
           >
-            {/* Image */}
-            <div className="lg:w-1/2 relative overflow-hidden h-[320px] md:h-[480px] lg:h-auto lg:min-h-[560px]">
+            {/* Image (0.7x size: lg:w-[35%] and adjusted heights) */}
+            <div className="w-full lg:w-[35%] relative overflow-hidden h-[224px] md:h-[336px] lg:min-h-[392px] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
               <img
                 src={service.image}
                 alt={service.title}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/20 to-transparent" />
             </div>
 
-            {/* Content */}
-            <div className="lg:w-1/2 flex items-center px-6 md:px-12 lg:px-20 py-16 lg:py-24">
+            {/* Content (occupies remaining 65% width) */}
+            <div className="w-full lg:w-[65%] flex items-center px-6 md:px-12 lg:px-20 py-10 lg:py-16">
               <div className="max-w-lg">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 border border-gold-300 flex items-center justify-center text-gold-500">
@@ -83,15 +87,54 @@ export default function ServicesSection() {
                   <div className="w-12 h-px bg-gold-400" />
                 </div>
 
-                <p className="text-gold-500 text-xs uppercase tracking-widest mb-3">
-                  Service {String(idx + 1).padStart(2, '0')}
-                </p>
                 <h2 className="font-serif text-charcoal-900 text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
                   {service.title}
                 </h2>
                 <p className="text-charcoal-500 text-base md:text-lg leading-relaxed font-light">
                   {service.description}
                 </p>
+                {service.id === 'events-coordination' && (
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('contact');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="mt-8 group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-400 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
+                  >
+                    Enquire Now
+                  </button>
+                )}
+                {service.id === 'decor-hire' && onViewCatalogue && (
+                  <button
+                    onClick={onViewCatalogue}
+                    className="mt-8 group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-400 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
+                  >
+                    See Catalogue
+                  </button>
+                )}
+                {service.id === 'catering' && (
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('contact');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="mt-8 group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-400 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
+                  >
+                    Enquire Now
+                  </button>
+                )}
+                {service.id === 'photography' && onViewGallery && (
+                  <button
+                    onClick={onViewGallery}
+                    className="mt-8 group inline-flex items-center gap-3 bg-transparent border border-gold-400 text-gold-400 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-500"
+                  >
+                    More Info
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -112,6 +155,12 @@ export default function ServicesSection() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
+              href="mailto:b.r.maxwell00@gmail.com"
+              className="inline-flex items-center gap-3 border border-gold-400 text-gold-300 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-300"
+            >
+              Send an Email
+            </a>
+            <a
               href="https://wa.me/27813566058"
               target="_blank"
               rel="noopener noreferrer"
@@ -120,16 +169,9 @@ export default function ServicesSection() {
               WhatsApp Us
             </a>
             <a
-              href="mailto:b.r.maxwell00@gmail.com"
-              className="inline-flex items-center gap-3 border border-gold-400 text-gold-300 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-300"
-            >
-              Send an Email
-            </a>
-            <a
               href="tel:0798874131"
               className="inline-flex items-center gap-3 border border-gold-400 text-gold-300 px-8 py-4 text-xs uppercase tracking-widest font-medium hover:bg-gold-400 hover:text-charcoal-900 transition-all duration-300"
             >
-              <Phone size={16} />
               Phone Us
             </a>
           </div>

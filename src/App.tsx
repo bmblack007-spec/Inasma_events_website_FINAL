@@ -10,11 +10,12 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 import ServicesHero from './components/ServicesHero';
 import ServicesSection from './components/ServicesSection';
+import GalleryPage from './components/GalleryPage';
 
-type Page = 'home' | 'services';
+type Page = 'home' | 'catalogue' | 'gallery';
 
 export default function App() {
-  const [page, setPage] = useState<Page>('services');
+  const [page, setPage] = useState<Page>('home');
   const [activeCategory, setActiveCategory] = useState<Category | 'All'>('All');
 
   const scrollToSection = useCallback((id: string) => {
@@ -40,19 +41,39 @@ export default function App() {
 
   const handleNavigate = useCallback(
     (section: string) => {
-      if (section === 'services') {
-        setPage('services');
-        window.scrollTo({ top: 0, behavior: 'auto' });
-        return;
-      }
-      if (section === 'home' || section === 'catalogue' || section === 'categories' || section === 'contact') {
+      if (section === 'home') {
         if (page !== 'home') {
           setPage('home');
           window.scrollTo({ top: 0, behavior: 'auto' });
-          setTimeout(() => scrollToSection(section === 'home' ? 'hero' : section), 100);
           return;
         }
-        scrollToSection(section === 'home' ? 'hero' : section);
+        scrollToSection('hero');
+      } else if (section === 'services') {
+        if (page !== 'home') {
+          setPage('home');
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          setTimeout(() => scrollToSection('services'), 100);
+          return;
+        }
+        scrollToSection('services');
+      } else if (section === 'catalogue' || section === 'categories') {
+        if (page !== 'catalogue') {
+          setPage('catalogue');
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          if (section === 'categories') {
+            setTimeout(() => scrollToSection('catalogue'), 100);
+          }
+          return;
+        }
+        scrollToSection(section === 'catalogue' ? 'hero' : 'catalogue');
+      } else if (section === 'contact') {
+        if (page === 'gallery') {
+          setPage('home');
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          setTimeout(() => scrollToSection('contact'), 100);
+          return;
+        }
+        scrollToSection('contact');
       }
     },
     [page, scrollToSection]
@@ -62,13 +83,27 @@ export default function App() {
     scrollToSection('services');
   }, [scrollToSection]);
 
-  if (page === 'services') {
+  if (page === 'gallery') {
+    return (
+      <div className="min-h-screen bg-charcoal-950">
+        <Navbar onNavigate={handleNavigate} />
+        <GalleryPage onBack={() => handleNavigate('services')} />
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    );
+  }
+
+  if (page === 'home') {
     return (
       <div className="min-h-screen bg-cream">
-        <Navbar onNavigate={handleNavigate} variant="services" />
-        <ServicesHero onExplore={handleExploreServices} />
+        <Navbar onNavigate={handleNavigate} />
+        <ServicesHero onExplore={handleExploreServices} onViewCatalogue={() => handleNavigate('catalogue')} />
         <BrandIntro />
-        <ServicesSection />
+        <ServicesSection 
+          onViewGallery={() => { setPage('gallery'); window.scrollTo({ top: 0, behavior: 'auto' }); }} 
+          onViewCatalogue={() => handleNavigate('catalogue')} 
+        />
         <Footer />
         <WhatsAppButton />
       </div>
@@ -77,9 +112,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <Navbar onNavigate={handleNavigate} variant="home" />
+      <Navbar onNavigate={handleNavigate} />
       <Hero onViewCatalogue={() => scrollToSection('catalogue')} />
-      <BrandIntro />
       <CategoryNav
         categories={categories}
         activeCategory={activeCategory}

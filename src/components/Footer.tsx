@@ -3,7 +3,6 @@ import logoWhite from '../assets/Logo_white_transparentBG.png';
 
 export default function Footer() {
   const whatsappHref = `https://wa.me/27813566058?text=${encodeURIComponent("Hello INASMA, I'd like to inquire about your décor hire services.")}`;
-  const instagramHref = 'https://www.instagram.com/inasma._decor?igsh=YzF6OWI3czFsMGxs&utm_source=qr';
 
   return (
     <footer id="contact" className="bg-charcoal-950 text-white pt-20 pb-8">
@@ -44,10 +43,6 @@ export default function Footer() {
                 <Mail size={16} className="text-gold-400" />
                 <span className="text-sm tracking-wide">b.r.maxwell00@gmail.com</span>
               </div>
-              <a href={instagramHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/70 hover:text-gold-300 transition-colors group">
-                <Instagram size={16} className="text-gold-400 group-hover:scale-110 transition-transform" />
-                <span className="text-sm tracking-wide">inasma._decor</span>
-              </a>
               <div className="flex items-center gap-3 text-white/70">
                 <MapPin size={16} className="text-gold-400" />
                 <span className="text-sm tracking-wide">Johannesburg, South Africa</span>
@@ -63,7 +58,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href={instagramHref}
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
