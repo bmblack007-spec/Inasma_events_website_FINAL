@@ -4,7 +4,6 @@ import { categories, products } from './data/products';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import BrandIntro from './components/BrandIntro';
-import CategoryNav from './components/CategoryNav';
 import ProductGallery from './components/ProductGallery';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
