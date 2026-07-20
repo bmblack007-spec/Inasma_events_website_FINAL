@@ -57,9 +57,9 @@ export default function ServicesSection({ onViewGallery, onViewCatalogue }: Serv
             id={service.id}
             className={`max-w-7xl mx-auto flex flex-col lg:items-center ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} pt-12 sm:pt-16 md:pt-20 lg:pt-28 pb-0 px-4 sm:px-6`}
           >
-            <div className="w-full lg:w-[35%] relative overflow-hidden h-[200px] sm:h-[260px] md:h-[336px] lg:min-h-[392px] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+            <div className={`w-full lg:w-[35%] relative overflow-hidden h-[200px] sm:h-[260px] md:h-[336px] lg:min-h-[392px] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)] ${service.id === 'photography' ? 'bg-charcoal-950' : ''}`}>
               <img src={service.image} alt={service.title} loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-[1.2s] hover:scale-105" />
+                className={`w-full h-full transition-transform duration-[1.2s] hover:scale-105 ${service.id === 'photography' ? 'object-contain object-center' : 'object-cover'}`} />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/20 to-transparent" />
             </div>
 
